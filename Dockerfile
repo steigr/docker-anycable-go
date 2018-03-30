@@ -13,6 +13,7 @@ ARG  UPX_ARGS="-9 --best --brute --ultra-brute"
 RUN  upx ${UPX_ARGS} /go/bin/anycable-go
 
 FROM docker.io/library/alpine:3.7 AS anycable-go
+RUN  apk add --no-cache ca-certificates && rm -rf /var/cache/apk/*
 RUN adduser -D anycable-go
 USER anycable-go
 COPY --from=anycable-go-builder /go/bin/anycable-go /bin/anycable-go
