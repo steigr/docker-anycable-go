@@ -7,7 +7,7 @@ RUN  export DEBIAN_FRONTEND=noninteractive \
 RUN  export CGO_ENABLED=0 \
             GOOS=linux \
             GOARCH=amd64 \
- &&  go get -u -f github.com/anycable/anycable-go/cmd/anycable-go
+ &&  go get -u -v -f github.com/anycable/anycable-go/cmd/anycable-go
 
 ARG  UPX_ARGS="-9 --best --brute --ultra-brute"
 RUN  upx ${UPX_ARGS} /go/bin/anycable-go
